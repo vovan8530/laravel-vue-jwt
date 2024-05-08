@@ -36,7 +36,11 @@ export default {
 
     methods: {
         getFruits() {
-            return axios.get('/api/fruits')
+            return axios.get('/api/fruits',{
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+                }
+            })
                 .then(
                     response => {
                         this.fruits = response.data.data
@@ -46,7 +50,8 @@ export default {
     },
 
     mounted() {
-       this.getFruits()
+        console.log(localStorage.getItem('access_token'));
+        this.getFruits()
     }
 }
 

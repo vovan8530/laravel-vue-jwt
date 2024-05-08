@@ -21,7 +21,7 @@
             <label class="form-label">Confirm password</label>
             <input v-model="password_confirmation" type="password" class="form-control">
         </div>
-        <button type="submit" @click.prevent="storeUser()" class="btn btn-primary">Login</button>
+        <button type="submit" @click.prevent="storeUser()" class="btn btn-primary">Registration</button>
     </div>
 </template>
 
