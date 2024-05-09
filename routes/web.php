@@ -8,6 +8,6 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/{vue_capture?}', IndexController::class)->where('vue_capture', '[\/\w\.-]*');

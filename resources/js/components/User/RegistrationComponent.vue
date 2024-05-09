@@ -21,6 +21,7 @@
             <label class="form-label">Confirm password</label>
             <input v-model="password_confirmation" type="password" class="form-control">
         </div>
+        <div v-if="error" class="text-danger">{{error}}</div>
         <button type="submit" @click.prevent="storeUser()" class="btn btn-primary">Registration</button>
     </div>
 </template>
@@ -42,6 +43,7 @@ export default {
             email: '',
             password: '',
             password_confirmation: '',
+            error: ''
         }
     },
 
@@ -53,7 +55,15 @@ export default {
                 password: this.password,
                 password_confirmation: this.password_confirmation,
             }).then(
-                response => console.log(response.data)
+                response => {
+                    localStorage.setItem('access_token', response.data)
+                    this.$router.go({name: 'users.personal'})
+                }
+            ).catch(
+                error => {
+                    console.log(error)
+                    this.error = error.response.data.message
+                }
             )
         }
     }

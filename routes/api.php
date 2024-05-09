@@ -5,10 +5,6 @@ use App\Http\Controllers\FruitController;
 use App\Http\Controllers\JWT\UserController;
 use Illuminate\Support\Facades\Route;
 
-//Route::get('/user', function (Request $request) {
-//    return $request->user();
-//})->middleware('auth:sanctum');
-
 
 Route::group([
     'middleware' => 'api',
@@ -24,7 +20,7 @@ Route::group([
 
 });
 
-Route::group(['middleware' => 'auth:api'], function () {
+Route::group(['middleware' => 'jwt.auth'], function () {
     Route::get('/fruits', FruitController::class);
 });
 

@@ -14,11 +14,12 @@
             <label class="form-label">Password</label>
             <input v-model="password" type="password" class="form-control">
         </div>
+        <div v-if="this.error" class="text-danger" >{{error}}</div>
         <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input">
             <label  class="form-check-label">Check me out</label>
         </div>
-        <button type="submit" @click="userLogin" class="btn btn-primary">Login</button>
+        <button type="submit" @click="userLogin()" class="btn btn-primary">Login</button>
     </div>
 
 </template>
@@ -36,6 +37,7 @@ export default {
         return{
             email: '',
             password: '',
+            error: '',
         }
     },
 
@@ -46,10 +48,15 @@ export default {
                 password: this.password,
             }).then(
                 response => {
-                    localStorage.setItem('access_token', response.data.access_token)
+                    localStorage.setItem('access_token', response.data.access_token);
+                    this.$router.go({name: 'users.personal'})
+                }
+            ).catch(
+                error => {
+                    this.error = error.response.data.error
                 }
             )
-        }
+        },
     }
 }
 

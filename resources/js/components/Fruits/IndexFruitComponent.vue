@@ -25,34 +25,33 @@
 
 <script>
 
+import api from "../../api.js";
+
 export default {
     name: 'IndexFruit',
 
     data() {
         return {
-            fruits: null
+            fruits: null,
         }
     },
 
+    mounted() {
+        this.getFruits()
+    },
+
     methods: {
-        getFruits() {
-            return axios.get('/api/fruits',{
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('access_token')}`
-                }
-            })
+        async getFruits() {
+            return api.get('/api/fruits')
                 .then(
                     response => {
                         this.fruits = response.data.data
                     }
                 )
-        }
+        },
     },
 
-    mounted() {
-        console.log(localStorage.getItem('access_token'));
-        this.getFruits()
-    }
+
 }
 
 </script>
