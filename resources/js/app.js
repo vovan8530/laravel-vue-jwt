@@ -12,8 +12,4 @@ const app = createApp({})
     .use(store)
     .mount('#app')
 
-// import ExampleComponent from './components/ExampleComponent.vue';
-// app.component('example-component', ExampleComponent);
-
-
-// app.mount('#app');
+export default app

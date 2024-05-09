@@ -1,4 +1,5 @@
 import axios from "axios";
+import router from "./router.js";
 
 
 const api = axios.create()
@@ -11,9 +12,6 @@ api.interceptors.request.use(config => {
             config.headers.setAuthorization(`Bearer ${localStorage.getItem('access_token')}`)
         }
         return config
-    },
-    error => {
-
     }
 )
 

@@ -43,7 +43,7 @@ export default {
         },
         logout(){
             api.post('/api/auth/logout').then(
-                response => {
+                () => {
                     localStorage.removeItem('access_token')
                     this.$router.go({name: 'users.login'})
                 }

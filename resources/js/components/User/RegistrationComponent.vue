@@ -32,8 +32,6 @@
 
 <script>
 
-import loginComponent from "./LoginComponent.vue";
-
 export default {
     name: 'Registration',
 
